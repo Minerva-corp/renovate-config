@@ -1,0 +1,41 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "group:allNonMajor",
+    "helpers:pinGitHubActionDigests",
+    ":semanticCommits"
+  ],
+  "labels": ["dependencies"],
+  "schedule": ["before 6am"],
+  "timezone": "Asia/Jakarta",
+  "ignorePaths": [".devcontainer/**"],
+  "npm": {
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["minor", "patch"],
+        "matchCurrentVersion": "!/^0/",
+        "automerge": true
+      },
+      {
+        "matchPackagePatterns": ["@typescript-eslint", "eslint", "typescript"],
+        "groupName": "ESLint Dependencies"
+      },
+      {
+        "matchDepTypes": ["engines"],
+        "enabled": false
+      },
+      {
+        "matchPackagePatterns": ["@types/node-fetch"],
+        "allowedVersions": "^2"
+      },
+      {
+        "matchPackagePatterns": ["@sapphire"],
+        "groupName": "Sapphire Dependencies"
+      }
+    ],
+    "rangeStrategy": "bump"
+  },
+  "separateMultipleMajor": true,
+  "separateMajorMinor": true
+}
