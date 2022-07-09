@@ -10,6 +10,10 @@
   "schedule": ["before 6am"],
   "timezone": "Asia/Jakarta",
   "ignorePaths": [".devcontainer/**"],
+  "docker": {
+    "enabled": true,
+    "rangeStrategy": "bump"
+  },
   "npm": {
     "packageRules": [
       {
